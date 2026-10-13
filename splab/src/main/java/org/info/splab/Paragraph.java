@@ -3,7 +3,7 @@ package org.info.splab;
 public class Paragraph implements Element {
     private String text;
     private Element parent;
-    private AlignStrategy textAlignment; // Noua asociere către Strategy
+    private AlignStrategy textAlignment;
 
     public Paragraph(String text) {
         this.text = text;
@@ -17,15 +17,10 @@ public class Paragraph implements Element {
         this.textAlignment = textAlignment;
     }
 
+    // Aceasta este metoda lipsă care rezolvă eroarea
     @Override
-    public void print() {
-        if (textAlignment != null) {
-            // Dacă are o strategie setată, deleagă randarea către ea
-            textAlignment.render(this, new Context());
-        } else {
-            // Comportamentul implicit (fără aliniere)
-            System.out.println("Paragraph: " + text);
-        }
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override public void add(Element e) { throw new UnsupportedOperationException(); }

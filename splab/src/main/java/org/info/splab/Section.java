@@ -12,6 +12,19 @@ public class Section implements Element {
         this.title = title;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    // Aici adăugăm metoda accept care o înlocuiește pe cea de print
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+        for (Element child : children) {
+            child.accept(visitor);
+        }
+    }
+
     @Override
     public void add(Element e) {
         if (e.getParent() != null) {
@@ -30,14 +43,6 @@ public class Section implements Element {
     @Override
     public Element get(int index) {
         return children.get(index);
-    }
-
-    @Override
-    public void print() {
-        System.out.println(title);
-        for (Element child : children) {
-            child.print();
-        }
     }
 
     @Override
