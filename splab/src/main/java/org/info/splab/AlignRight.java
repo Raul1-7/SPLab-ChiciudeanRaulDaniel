@@ -1,4 +1,5 @@
 package org.info.splab;
+import org.info.splab.models.Paragraph;
 
 public class AlignRight implements AlignStrategy {
     @Override

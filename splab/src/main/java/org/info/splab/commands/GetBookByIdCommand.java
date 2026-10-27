@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public class GetBookByIdCommand implements Command<Optional<Book>> {
     private final BooksService booksService;
-    private final String id;
+    private final Long id;
 
-    public GetBookByIdCommand(BooksService booksService, String id) {
+    public GetBookByIdCommand(BooksService booksService, Long id) {
         this.booksService = booksService;
         this.id = id;
     }

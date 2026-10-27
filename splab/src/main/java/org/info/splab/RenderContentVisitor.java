@@ -1,5 +1,7 @@
 package org.info.splab;
 
+import org.info.splab.models.*;
+
 public class RenderContentVisitor implements Visitor {
     @Override
     public void visit(Book book) {
@@ -20,12 +22,6 @@ public class RenderContentVisitor implements Visitor {
     public void visit(Image image) {
         System.out.println("Image with name: " + image.getUrl());
     }
-
-    @Override
-    public void visit(ImageProxy imageProxy) {
-        imageProxy.loadImage().accept(this);
-    }
-
     @Override
     public void visit(Table table) {
         System.out.println("Table with title: " + table.getTitle());

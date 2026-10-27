@@ -4,9 +4,9 @@ import org.info.splab.services.BooksService;
 
 public class DeleteBookCommand implements Command<Boolean> {
     private final BooksService booksService;
-    private final String id;
+    private final Long id;
 
-    public DeleteBookCommand(BooksService booksService, String id) {
+    public DeleteBookCommand(BooksService booksService, Long id) {
         this.booksService = booksService;
         this.id = id;
     }

@@ -32,7 +32,7 @@ public class BooksController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getBookById(@PathVariable String id) {
+    public ResponseEntity<?> getBookById(@PathVariable Long id) {
         GetBookByIdCommand command = new GetBookByIdCommand(booksService, id);
         Optional<Book> book = commandExecutor.executeSync(command);
         if (book.isPresent()) {
@@ -54,14 +54,14 @@ public class BooksController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable String id, @RequestBody Book book) {
+    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book book) {
         UpdateBookCommand command = new UpdateBookCommand(booksService, id, book);
         Book updatedBook = commandExecutor.executeSync(command);
         return ResponseEntity.ok(updatedBook);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable String id) {
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         DeleteBookCommand command = new DeleteBookCommand(booksService, id);
         boolean deleted = commandExecutor.executeSync(command);
         if (deleted) {

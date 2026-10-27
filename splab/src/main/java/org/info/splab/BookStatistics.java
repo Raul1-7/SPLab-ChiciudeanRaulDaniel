@@ -1,26 +1,35 @@
 package org.info.splab;
 
+import org.info.splab.models.*;
+
 public class BookStatistics implements Visitor {
     private int paragraphsCount = 0;
     private int imagesCount = 0;
-    private int tablesCount = 0;
+    private int tablesCount = 0; // Am adăugat contorul pentru tabele
 
     @Override
-    public void visit(Paragraph paragraph) { paragraphsCount++; }
+    public void visit(Paragraph paragraph) {
+        paragraphsCount++;
+    }
 
     @Override
-    public void visit(Image image) { imagesCount++; }
+    public void visit(Image image) {
+        imagesCount++;
+    }
 
     @Override
-    public void visit(ImageProxy imageProxy) { imagesCount++; }
+    public void visit(Table table) {
+        tablesCount++;
+    }
 
     @Override
-    public void visit(Table table) { tablesCount++; }
+    public void visit(Book book) {}
 
-    // Metodele pentru structură pot fi lăsate goale
-    @Override public void visit(Book book) {}
-    @Override public void visit(Section section) {}
-    @Override public void visit(TableOfContents toc) {}
+    @Override
+    public void visit(Section section) {}
+
+    @Override
+    public void visit(TableOfContents toc) {}
 
     public void printStatistics() {
         System.out.println("Book Statistics:");

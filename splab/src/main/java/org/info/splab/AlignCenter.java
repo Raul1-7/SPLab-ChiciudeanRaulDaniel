@@ -1,5 +1,7 @@
 package org.info.splab;
 
+import org.info.splab.models.Paragraph;
+
 public class AlignCenter implements AlignStrategy {
     @Override
     public void render(Paragraph paragraph, Context context) {

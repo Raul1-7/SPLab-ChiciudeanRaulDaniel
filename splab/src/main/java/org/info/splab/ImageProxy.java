@@ -1,5 +1,8 @@
 package org.info.splab;
 
+import org.info.splab.models.Image;
+import org.info.splab.Element;
+
 public class ImageProxy implements Element {
     private String url;
     private Image realImage;
@@ -17,7 +20,7 @@ public class ImageProxy implements Element {
     }
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit(this);
+        visitor.visit(this.loadImage());
     }
 
     @Override public void add(Element e) { throw new UnsupportedOperationException("Nu se pot adăuga elemente într-un ImageProxy"); }
